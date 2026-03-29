@@ -1,0 +1,10 @@
+# Ignore Environment Variables
+.env
+
+# Ignore Database Backups
+*.sql
+ngo_backup
+ngo_backup.sql
+
+# Ignore Node Modules in both frontend and backend folders
+**/node_modules/

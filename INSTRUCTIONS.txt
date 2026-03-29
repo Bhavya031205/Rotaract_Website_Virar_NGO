@@ -1,0 +1,72 @@
+# NGO Management System - Installation Guide
+
+## 1. Prerequisites
+Before starting, please ensure you have the following installed on your computer:
+- **Node.js** (Version 18 or higher)
+- **PostgreSQL** (Version 15, 16, 17, or 18)
+- **pgAdmin 4** (Usually comes installed with PostgreSQL)
+
+---
+
+## 2. Database Setup (Importing Data)
+1. Open **pgAdmin 4**.
+2. In the left sidebar, right-click on **"Databases"** -> **Create** -> **Database...**
+3. Name the database: `ngo_management` (or your preferred name) and click **Save**.
+4. Right-click on your newly created database (`ngo_management`) -> Select **"Restore..."**
+5. In the **"Filename"** field, click the folder icon and select the file named `ngo_backup.sql` which is included in this project folder.
+   - *Note: If you don't see the file, ensure the file type dropdown in the file picker is set to "All Files".*
+6. Click **Restore**.
+   - *You might see a "Process returned exit code 1" warning. This is usually normal and can be ignored if the tables and data appear correctly.*
+
+---
+
+## 3. Backend Setup
+1. Open the `backend` folder.
+2. Look for a file named `.env` (or rename `.env.example` to `.env` if `.env` is missing).
+3. Open `.env` in a text editor (Notepad, VS Code) and update your database credentials to match your local PostgreSQL setup:
+   ```env
+   DB_USER=postgres
+   DB_PASSWORD=your_postgres_password
+   DB_NAME=ngo_management
+   DB_HOST=localhost
+   DB_PORT=5432
+(Replace your_postgres_password with the actual password you set when installing PostgreSQL).
+
+Open a terminal (Command Prompt or PowerShell) inside the backend folder and run the following commands:
+
+Bash
+npm install
+npm run dev
+You should see a message confirming the server is running (e.g., "Server running on port 5000").
+
+4. Frontend Setup
+Open a new terminal window inside the frontend folder.
+
+Run the following commands:
+
+Bash
+npm install
+npm run dev
+Once started, open the link shown in the terminal (usually http://localhost:5173) in your web browser.
+
+5. Login Credentials (Defaults)
+Use these credentials to log in initially:
+
+Admin Login:
+
+Email: admin@example.com
+
+Password: (The password you set in the database or provided separately)
+
+Member Login:
+
+Email: (A sample member email from the database)
+
+Password: (The sample member password)
+
+Troubleshooting
+"Command not found": If npm is not recognized, ensure Node.js is installed and added to your system PATH.
+
+Database Connection Error: Double-check the password in the backend/.env file. It must match your local PostgreSQL password exactly.
+
+Port In Use: If port 5000 or 5173 is busy, the application might start on a different port (check the terminal output).
